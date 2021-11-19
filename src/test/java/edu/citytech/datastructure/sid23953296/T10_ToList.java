@@ -52,6 +52,7 @@ public class T10_ToList {
         var list = bst.findAll(new Product(500), predicate, (Product e1, Long e2) -> {
             System.out.println(e1 + " - " + e2);
         });
+
         var actual = bst.toList().size();
         var expected = products.length;
 
