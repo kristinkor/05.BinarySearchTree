@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Predicate;
 
+import static edu.citytech.datastructure.sid23953296.bst.TreeHelper.isLessThan;
+
 public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEngine<T>{
     @Override
     public List<T> findAll(Node<T> node, T value, Predicate<EnumComparison> predicate, BiConsumer<T, Long> biConsumer) {
@@ -18,9 +20,9 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
         System.out.println(equalTo);
         System.out.println(lessThan);
         // actual value it is going to return , actual comparison count
-//        if(){
-//            biConsumer.accept(null,1L);
-//        }
+        if(isLessThan(value, node.value)){
+            biConsumer.accept(null,1L);
+        }
 
 
 
