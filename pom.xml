@@ -33,10 +33,14 @@
 			<artifactId>bst-facade</artifactId>
 			<version>1.3653</version>
 		</dependency>
+	 <dependency>
+	  <artifactId>junit</artifactId>
+	  <groupId>junit</groupId>
+	  <version>4.11</version>
+	 </dependency>
 	</dependencies>
 
 	<build>
-
 		<finalName>korzhenevskaya-bst</finalName>
 
 	</build>

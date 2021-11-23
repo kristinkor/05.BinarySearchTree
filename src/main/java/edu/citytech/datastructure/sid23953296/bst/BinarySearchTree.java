@@ -1,20 +1,19 @@
 package edu.citytech.datastructure.sid23953296.bst;
 
-import com.jbbwebsolutions.bst.AbstractSearchEngine;
-import com.jbbwebsolutions.bst.BSTFacade;
-import com.jbbwebsolutions.bst.Node;
-import com.jbbwebsolutions.bst.NodeFacadeInsertion;
+import com.jbbwebsolutions.bst.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 public class BinarySearchTree<T extends Comparable<T>> implements BSTFacade<T> {
     private Node<T> root;
     private AbstractSearchEngine<T> findEngine = null;
-    private NodeFacadeInsertion<T> insertFacade = null;
+    private NodeFacadeInsertion<T> insertFacade;
 
     public BinarySearchTree() {
         this.findEngine = new DefaultSearch<T>();
@@ -109,5 +108,10 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTFacade<T> {
         newRoot.leftChild = root;
 
         return newRoot;
+    }
+
+    @Override
+    public List<T> findAll(T value, Predicate<EnumComparison> predicate, BiConsumer<T, Long> biConsumer) {
+        return this.findEngine.findAll(this.root, value, predicate, biConsumer);
     }
 }

@@ -1,12 +1,15 @@
 package edu.citytech.datastructure.sid23953296.bst;
 
 import com.jbbwebsolutions.bst.AbstractSearchEngine;
+import com.jbbwebsolutions.bst.EnumComparison;
 import com.jbbwebsolutions.bst.INumber;
 import com.jbbwebsolutions.bst.Node;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 
 import static edu.citytech.datastructure.sid23953296.bst.TreeHelper.isEmpty;
 
@@ -107,6 +110,11 @@ public class CustomSearchEngine<T extends Comparable<T>> extends AbstractSearchE
         }
 
         return null;
+    }
+
+    @Override
+    public List<T> findAll(Node<T> node, T value, Predicate<EnumComparison> predicate, BiConsumer<T, Long> biConsumer) {
+        return super.findAll(node, value, predicate, biConsumer);
     }
 
     @Override
