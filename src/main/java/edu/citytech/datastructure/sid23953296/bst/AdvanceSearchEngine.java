@@ -24,7 +24,6 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
             result.add(equalTo(node, value, biConsumer));
             return result;
         }
-
         if (greaterThan && !equalTo) {
             greaterThan(node, value, biConsumer, result);
             return result;
@@ -37,9 +36,7 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
             lessThan(node, value, biConsumer, result);
             return result;
         }
-
         return result;
-
     }
 
 
@@ -63,7 +60,7 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
         biConsumer.accept(node.value, 1L);
         if (isLessThan(value, node.value)) {
             list.add(node.value);
-            findAllRight(node.rightChild, list, value);
+            findAllRight(node.rightChild, list);
             greaterThan(node.leftChild, value, biConsumer, list);
         } else {
             greaterThan(node.rightChild, value, biConsumer, list);
@@ -81,7 +78,7 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
         }
         if (isLessThan(value, node.value)) {
             list.add(node.value);
-            findAllRight(node.rightChild, list, value);
+            findAllRight(node.rightChild, list);
             greaterThanOrEqual(node.leftChild, value, biConsumer, list);
         } else {
             greaterThanOrEqual(node.rightChild, value, biConsumer, list);
@@ -96,25 +93,25 @@ public class AdvanceSearchEngine<T extends Comparable<T>> extends CustomSearchEn
         }
         biConsumer.accept(node.value, 1L);
         if (isGreaterThan(value, node.value)) {
-            findAllLeft(node.leftChild, list, value);
+            findAllLeft(node.leftChild, list);
             lessThan(node.leftChild, value, biConsumer, list);
         }
 
     }
 
-    public void findAllRight(Node<T> node, List<T> list, T value) {
+    public void findAllRight(Node<T> node, List<T> list) {
         if (node != null) {
             list.add(node.value);
-            findAllRight(node.leftChild, list, value);
-            findAllRight(node.rightChild, list, value);
+            findAllRight(node.leftChild, list);
+            findAllRight(node.rightChild, list);
         }
     }
 
-    public void findAllLeft(Node<T> node, List<T> list, T value) {
+    public void findAllLeft(Node<T> node, List<T> list) {
         if (node != null) {
             list.add(node.value);
-            findAllLeft(node.leftChild, list, value);
-            findAllLeft(node.rightChild, list, value);
+            findAllLeft(node.leftChild, list);
+            findAllLeft(node.rightChild, list);
         }
     }
 }

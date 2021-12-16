@@ -41,7 +41,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>korzhenevskaya-bst</finalName>
+		<finalName>korzhenevskaya-avl</finalName>
 
 	</build>
 

@@ -194,6 +194,26 @@ class T10_ToList {
     }
 
     @Test
+    @DisplayName("Greater Than or Equal 600")
+    void greaterThanOrEqual5600() {
+        BSTFacade<Long> bst = new BinarySearchTree<>(new AdvanceSearchEngine<>(), new AVLTreeInsertion<>());
+        bst.insert(data);
+        Predicate<EnumComparison> predicate = e -> EnumComparison.GREATER_THAN == e;
+        predicate = predicate.or(e -> EnumComparison.EQUAL == e);
+
+
+        //biConsumer
+        var list = bst.findAll(5600L, predicate, (Long value, Long rowCount) -> System.out.println(value + " - " + rowCount));
+
+        System.out.println("List: " + list + " size: " + list.size());
+
+        var actual = list.size();
+        var expected = 3;
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     @DisplayName("Greater Than or Equal 7000")
     void greaterThanOrEqual7000() {
         BSTFacade<Long> bst = new BinarySearchTree<>(new AdvanceSearchEngine<>(), new AVLTreeInsertion<>());

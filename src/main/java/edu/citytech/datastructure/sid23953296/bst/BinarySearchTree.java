@@ -19,6 +19,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTFacade<T> {
         this.findEngine = new DefaultSearch<T>();
         this.insertFacade = new BasicNodeInsertion<>();
     }
+
     public BinarySearchTree(NodeFacadeInsertion<T> insertFacade) {
         this.findEngine = new DefaultSearch<T>();
         this.insertFacade = insertFacade;
@@ -28,6 +29,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTFacade<T> {
         this.findEngine = findEngine;
         this.insertFacade = new BasicNodeInsertion<>();
     }
+
     public BinarySearchTree(AbstractSearchEngine findEngine, NodeFacadeInsertion insertFacade) {
         this.findEngine = findEngine;
         this.insertFacade = insertFacade;
@@ -102,7 +104,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTFacade<T> {
         });
         return h.get();
     }
-    public Node<T> rotateLeft(){
+
+    public Node<T> rotateLeft() {
         var newRoot = root.rightChild;
         root.rightChild = newRoot.leftChild;
         newRoot.leftChild = root;
